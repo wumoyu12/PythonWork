@@ -23,3 +23,21 @@ def CheckInfo(optionwhich, pointcheck):
 
 if __name__ == "__main__":
     main();
+
+
+
+
+def CheckInfo(optionwhich, pointcheck):
+    match(pointcheck):
+        case 'askinfo':
+            if(ord(optionwhich) < ord('1') or ord(optionwhich) > ord('2')):
+                print("Incorrect response. Type 1 or 2");
+            else:
+                print("You have selected wisely");
+        case default:
+            print("Houston...we have a problem");
+
+
+
+
+
