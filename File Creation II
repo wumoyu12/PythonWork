@@ -35,6 +35,9 @@ def CheckInfo(optionwhich, pointcheck):
 
 def FileConnectivity():
     fileDir=os.path.dirnmae(os.path.realpath("__file__"));
+    fileexist=bool(path.exists(whichfilename));
+    if(fileexist == True):
+        adminfile=open(whichfilename, "r");
 
 if __name__ == "__main__":
     main();
