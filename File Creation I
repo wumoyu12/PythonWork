@@ -14,14 +14,18 @@ def AskInfo():
 def CheckInfo(optionwhich, pointcheck):
     match(pointcheck):
         case "askinfo":
-            optwhich = ord(optionwhich);
-            if( int(optwhich) != 49 or int(optwhich) != 50):
+            lengthopt=len(optionwhich);
+            if( lengthopt != 1):
                 print("Incorrect response. Type 1 or 2");
-                AskInfo();
             else:
-                print("You have selected wisely");
+                optwhich = ord(optionwhich);
+                if(int(optwhich) < 49 or int(optwhich) > 50):
+                    print("Incorrect response. Type 1 or 2");
+                else:
+                    print("You have selected wisely");
         case default:
             print("Houston...we have a problem");
-
+    AskInfo();
+    
 if __name__ == "__main__":
     main();
