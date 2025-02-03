@@ -38,6 +38,9 @@ def FileConnectivity():
     fileexist=bool(path.exists(whichfilename));
     if(fileexist == True):
         adminfile=open(whichfilename, "r");
+    else:
+        adminfile=open(whichfilename, "x");
+    adminfile.close();
 
 if __name__ == "__main__":
     main();
