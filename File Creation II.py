@@ -44,3 +44,15 @@ def FileConnectivity():
 
 if __name__ == "__main__":
     main();
+
+
+
+
+def FileConnectivity():
+    fileDir=os.path.dirnmae(os.path.realpath("__file__"));
+    fileexist=bool(path.exists(whichfilename));
+    if(fileexist == True):
+        adminfile=open(whichfilename, "r");
+    else:
+        adminfile=open(whichfilename, "x");
+    adminfile.close();
