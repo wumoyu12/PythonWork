@@ -41,9 +41,12 @@ def CheckInfo(optionwhich, pointcheck):
             sys.exit();
 
 def FileType():
-    whichoption=str(input("1-Word\n"
-                          "2-txt\n"
+    whichtype=str(input("1-Word Document\n"
+                          "2-Text File\n"
                           "Select an option by typing 1 or 2: "))
+    match(whichtype):
+        case
+    
     AskInfo();
     
 
