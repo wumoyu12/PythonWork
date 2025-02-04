@@ -1,14 +1,14 @@
 import os.path
 from os import path
 
-msg=["New File Name:", "Existing File Name:"];
+#msg=["New File Name:", "Existing File Name:"];
 
 def main():
     AskInfo();
 
 def AskInfo():
     checkpoint = "askinfo";
-    whichoption=str(input("\n1-Create a new file\n"
+    whichoption=str(input("1-Create a new file\n"
                           "2-Search for an existing file\n"
                           "Select an option by typing 1 or 2: "))
     CheckInfo(whichoption, checkpoint);
@@ -28,9 +28,11 @@ def CheckInfo(optionwhich, pointcheck):
                     AskInfo();
                 else:
                     if(optwhich == 49):
-                        whichfilename = str(input(msg[0]));
+                        FileType();
+                        #whichfilename = str(input(msg[0]));
                     else:
-                        whichfilename = str(input(msg[1]));
+                        FileType();
+                        #whichfilename = str(input(msg[1]));
 
                     #whichfilename = whichfilename + ".doc";
                     #FileConnectivity();
@@ -38,6 +40,12 @@ def CheckInfo(optionwhich, pointcheck):
             print("Houston...we have a problem");
             sys.exit();
 
+def FileType():
+    whichoption=str(input("1-Word\n"
+                          "2-txt\n"
+                          "Select an option by typing 1 or 2: "))
+    AskInfo();
+    
 def FileConnectivity():
     fileDir=os.path.dirnmae(os.path.realpath("__file__"));
     fileexist=bool(path.exists(whichfilename));
