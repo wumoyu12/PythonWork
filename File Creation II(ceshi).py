@@ -27,14 +27,13 @@ def CheckInfo(optionwhich, pointcheck):
                     print("Incorrect response. Type 1 or 2");
                     AskInfo();
                 else:
-                    if(optwhich == 1):
-                        whichfilename = str(input(mfg[0]));
+                    if(optwhich == 49):
+                        whichfilename = str(input(msg[0]));
                     else:
-                        whichfilename = str(input(mfg[1]));
-                    #print("You have selected wisely");
+                        whichfilename = str(input(msg[1]));
 
-                    whichfilename = whichfilename + ".doc";
-                    FileConnectivity();
+                    #whichfilename = whichfilename + ".doc";
+                    #FileConnectivity();
         case default:
             print("Houston...we have a problem");
             sys.exit();
@@ -50,5 +49,3 @@ def FileConnectivity():
 
 if __name__ == "__main__":
     main();
-
-
