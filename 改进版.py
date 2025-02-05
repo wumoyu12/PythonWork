@@ -65,6 +65,7 @@ def Create():
         NewFileAdd()
     else:
         print("This file already exists.")
+        AskInfo();
 
 def NewFileAdd():
     ask = str(input("Do you want to write anything in this file (type 1:Yes / type 2:No): "))
@@ -87,10 +88,11 @@ def Addtext():
         print("Added successfully!")
         pythfile.close()
         Readfile()
+        AskInfo();
 
 def Readfile():
     print("You have the following content in " + filename + ":")
-    pythfile = open(filename + filetype, "r")  # Ensure using the correct file name
+    pythfile = open(filename + filetype, "r")
     print(pythfile.read())  # To read all content in the file
     pythfile.close()
 
@@ -132,10 +134,10 @@ def Overwrite():
         print("Overwritten successfully!")
         pythfile.close()
         Readfile()
+        AskInfo();
 
 def FileConnectivity():
     global exist
-    print(filename + filetype)
     fileDir = os.path.dirname(os.path.realpath("__file__"))
     fileexist = bool(path.exists(filename + filetype))
     if (fileexist == True):
