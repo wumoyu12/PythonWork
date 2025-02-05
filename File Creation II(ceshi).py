@@ -42,7 +42,7 @@ def CheckInfo(optionwhich, pointcheck):
 
 def FileType():
     whichtype=str(input("1-Word Document\n"
-                          "2-Text File\n"
+                          "2-Text File\n" "3-Excel\n"
                           "Select an option by typing 1 or 2: "))
     match(whichtype):
         case
