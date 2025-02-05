@@ -1,7 +1,7 @@
 import os.path
 from os import path
 
-#msg=["New File Name:", "Existing File Name:"];
+msg=["New File Name:", "Existing File Name:"];
 
 def main():
     AskInfo();
@@ -28,11 +28,9 @@ def CheckInfo(optionwhich, pointcheck):
                     AskInfo();
                 else:
                     if(optwhich == 49):
-                        FileType();
-                        #whichfilename = str(input(msg[0]));
+                        Create();
                     else:
-                        FileType();
-                        #whichfilename = str(input(msg[1]));
+                        Search();
 
                     #whichfilename = whichfilename + ".doc";
                     #FileConnectivity();
@@ -42,14 +40,54 @@ def CheckInfo(optionwhich, pointcheck):
 
 def FileType():
     whichtype=str(input("1-Word Document\n"
-                          "2-Text File\n" "3-Excel\n"
-                          "Select an option by typing 1 or 2: "))
-    match(whichtype):
-        case
+                        "2-Text File\n"
+                        "3-Excel\n"
+                        "Select an option by typing 1,2 or 3: "))
+    Checkfiletype(whichtype);
     
-    AskInfo();
+def Checkfiletype(file):
+    global filetype;
+    match(file):
+        case "1":
+            filetype=".doc";
+        case "2":
+            filetype=".txt";
+        case "3":
+            filetype=".xlsx";
+        case default:
+            print("It's an invaild select, please try again");
+            FileType();
     
+def Create():
+    global filename;
+    FileType();
+    filename=str(input("Please Enter " + msg[0]));
+    FileConnectivity();
+    if (exist=="n"):
+        pythfile = open(filename, "x");
+        print("File created successfully!");
+        NewFileAdd();
+    else:
+        print("This file is already exist.");
 
+def NewFileAdd():
+    ask=str(input("Do you want write anything in this file(type 1:Yes/type 2:No)."))
 
+def Search():
+    global filename;
+    FileType();
+    filename=str(input("Please Enter " + msg[1]));
+    FileConnectivity();
+
+def FileConnectivity():
+    global exist;
+    print(filename + filetype);
+    fileDir=os.path.dirname(os.path.realpath("__file__"));
+    fileexist=bool(path.exists(filename + filetype));
+    if(fileexist == True):
+        exist="y";
+    else:
+        exist="n";
+    
 if __name__ == "__main__":
     main();
