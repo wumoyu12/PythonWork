@@ -31,9 +31,6 @@ def CheckInfo(optionwhich, pointcheck):
                         Create();
                     else:
                         Search();
-
-                    #whichfilename = whichfilename + ".doc";
-                    #FileConnectivity();
         case default:
             print("Houston...we have a problem");
             sys.exit();
@@ -41,8 +38,7 @@ def CheckInfo(optionwhich, pointcheck):
 def FileType():
     whichtype=str(input("1-Word Document\n"
                         "2-Text File\n"
-                        "3-Excel\n"
-                        "Select an option by typing 1,2 or 3: "))
+                        "Select an option by typing 1 or 2"))
     Checkfiletype(whichtype);
     
 def Checkfiletype(file):
@@ -52,8 +48,6 @@ def Checkfiletype(file):
             filetype=".doc";
         case "2":
             filetype=".txt";
-        case "3":
-            filetype=".xlsx";
         case default:
             print("It's an invaild select, please try again");
             FileType();
@@ -66,18 +60,77 @@ def Create():
     if (exist=="n"):
         pythfile = open(filename, "x");
         print("File created successfully!");
+        pythfile.close();
         NewFileAdd();
     else:
         print("This file is already exist.");
 
 def NewFileAdd():
     ask=str(input("Do you want write anything in this file(type 1:Yes/type 2:No)."))
+    match (ask):
+        case "1":
+            Addtext();
+        case "2":
+            AskInfo();
+        case default:
+            print("Your input is invalid, please type 1 or 2.");
+            NewfileAdd();
+
+def Addtext():
+    text=str(input("Type something add to your file"));
+    if (text==""):
+        print("please enter something");
+    else:
+        pythfile=open(filename, "a");
+        pythfile.write(text);
+        print("Add Successfully!");
+        pythfile.close();
+        Readfile();
+        
+def Readfile():
+    print("You have flowing in " + filename + ":");
+    pythfile=open(filename, "r");
+    print(pythfile.readline());
+    pythfile.close();
 
 def Search():
     global filename;
     FileType();
     filename=str(input("Please Enter " + msg[1]));
     FileConnectivity();
+    if (exist=="y"):
+        Readfile();
+        AskSearch();
+    else:
+        print("This file is not exist.");
+        AskInfo();
+    
+def AskSearch():
+    what=str(input("1-Add something to this file\n"
+                   "2-Overwrite the file"
+                   "3-Go Back"
+                   "Select an option by typing 1 or 2"))
+    match (what):
+        case "1":
+            Addtext();
+        case "2":
+            Overwrite();
+        case "3":
+            AskInfo();
+        case default:
+            print("Your input is invalid, please try again")
+            AskSearch();
+            
+def Overwrite():
+    text=str(input("Type something to write in your file"));
+    if (text==""):
+        print("please enter something");
+    else:
+        pythfile=open(filename, "w");
+        pythfile.write(text);
+        print("Add Successfully!");
+        pythfile.close();
+        Readfile();
 
 def FileConnectivity():
     global exist;
