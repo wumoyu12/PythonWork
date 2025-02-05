@@ -1,6 +1,6 @@
 import os
 from os import path
-import sys  # Import sys module for sys.exit()
+import sys
 
 msg = ["New File Name:", "Existing File Name:"]
 
