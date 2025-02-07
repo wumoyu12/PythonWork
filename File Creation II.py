@@ -1,3 +1,4 @@
+import sys
 import os
 from os import path
 
@@ -10,7 +11,8 @@ def AskInfo():
     checkpoint = "askinfo";
     whichoption = str(input("\n1-Create a new file\n"
                             "2-Search for an existing file\n"
-                            "Select an option by typing 1 or 2: "))
+                            "3-Exit the Program"
+                            "Select an option by typing 1 2 or 3: "))
     CheckInfo(whichoption, checkpoint);
 
 def CheckInfo(optionwhich, pointcheck):
@@ -19,18 +21,20 @@ def CheckInfo(optionwhich, pointcheck):
         case "askinfo":
             lengthopt = len(optionwhich)
             if(lengthopt != 1):
-                print("Incorrect response. Type 1 or 2")
+                print("Incorrect response. Type 1 2 or 3")
                 AskInfo()
             else:
                 optwhich = ord(optionwhich)
-                if(int(optwhich) < 49 or int(optwhich) > 50):
-                    print("Incorrect response. Type 1 or 2")
+                if(int(optwhich) < 49 or int(optwhich) > 51):
+                    print("Incorrect response. Type 1 2 or 3")
                     AskInfo()
                 else:
                     if(optwhich == 49):
                         Create()
-                    else:
+                    if(optwhich == 50):
                         Search()
+                    else:
+                        Exit()
         case default:
             print("Houston...we have a problem")
             sys.exit()
@@ -39,6 +43,7 @@ def FileType():
     whichtype = str(input("\n1-Word Document\n"
                           "2-Text File\n"
                           "3-Excel\n"
+                          "4-Power Point\n"
                           "Select an option by typing 1 or 2: "))
     Checkfiletype(whichtype)
 
@@ -51,8 +56,10 @@ def Checkfiletype(file):
             filetype = ".txt"
         case "3":
             filetype = ".xlsx"
+        case "4":
+            filetype = ".ppt"
         case default:
-            print("It's an invalid selection, please type 1 or 2")
+            print("It's an invalid selection, please type 1 2 3 or 4")
             FileType()
 
 def Create():
@@ -88,6 +95,9 @@ def FileConnectivity():
         exist = "y"
     else:
         exist = "n"
+
+def Exit():
+    sys.exit();
 
 if __name__ == "__main__":
     main()
